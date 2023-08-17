@@ -8,7 +8,17 @@
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "outDir": "dist"
+    "outDir": "dist",
+    "baseUrl": ".",
+    "paths": {
+      "@controllers/*": ["src/controllers/*"],
+      "@models/*": ["src/models/*"],
+      "@routes/*": ["src/routes/*"],
+      "@customTypes/*": ["src/customTypes/*"],
+      "@databases/*": ["src/databases/*"],
+      "@functions/*": ["src/functions/*"],
+      "@middlewares/*": ["src/middlewares/*"]
+    }
   },
   "include": ["src"],
   "exclude": ["node_modules"]
