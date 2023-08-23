@@ -1,20 +1,21 @@
 import { Request, Response } from "express";
 import { connectToDatabase } from "@databases/connection";
 import { studentSchema } from "@models/students";
+import { teacherSchema } from "@models/teachers";
+import { adminSchema } from "@models/admins";
 
 export const getUser = async (request: Request, response: Response) => {
   await connectToDatabase();
-  const user = await studentSchema.findOne({ uniqueId: request.params.id });
-  // remove password and _id from user object
-  if (user !== null) {
-    const updatedUser = {
-      ...user.toObject(),
-      password: undefined,
-      _id: undefined,
-    };
-    console.log(updatedUser);
-    response.send(updatedUser);
+  const isUser = await Promise.all([
+    studentSchema.findOne({ uniqueId: request.params.id }),
+    teacherSchema.findOne({ uniqueId: request.params.id }),
+    adminSchema.findOne({ uniqueId: request.params.id }),
+  ]);
+  const user = new Set(isUser);
+  user.delete(null);
+  if (user.size > 0) {
+    return response.send(user.values().next().value);
   } else {
-    response.send({ message: "User not found" });
+    return response.send({ message: "User not found" });
   }
 };
