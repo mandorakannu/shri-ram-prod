@@ -20,7 +20,11 @@ const student = new Schema({
   uniqueId: String,
   mobileNumber: Number,
   subjects: {
-    type: Array,
+    english: Number,
+    hindi: Number,
+    maths: Number,
+    science: Number,
+    computer: Number,
   },
 });
 
