@@ -1,6 +1,7 @@
 import { getUserRoute } from "./getUser";
 import { authAdminRoute, authStudentRoute, authTeacherRoute } from "./login";
 import { registerComplainsRoute, getComplainsRoute } from "./complain";
+import { studentDetailsUpdateRoute } from "./studentDetailsUpdate";
 
 export const allRoutes = [
   authStudentRoute,
@@ -9,4 +10,5 @@ export const allRoutes = [
   getUserRoute,
   registerComplainsRoute,
   getComplainsRoute,
+  studentDetailsUpdateRoute,
 ];
