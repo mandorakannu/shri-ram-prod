@@ -27,6 +27,12 @@ export const getTeacherRecords = async (
   const teacher = request.params.id;
   const uniqueId = teacher.split("-")[0];
   await connectToDatabase();
-  const teacherRecords = await teacherSchema.find({ uniqueId });
-  response.json(teacherRecords).status(200);
+  const teacherRecords = await teacherSchema.findOne({ uniqueId });
+  response
+    .json({
+      name: teacherRecords?.name,
+      mobileNumber: teacherRecords?.mobileNumber,
+      SubjectProfile: teacherRecords?.SubjectProfile,
+    })
+    .status(200);
 };

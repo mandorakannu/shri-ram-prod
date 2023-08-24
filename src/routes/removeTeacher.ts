@@ -7,6 +7,6 @@ export const getTeacherRecordsRoute = router.get(
   getTeacherRecords
 );
 export const deleteTeacherRecordsRoute = router.delete(
-  "/admin/findTeacher/:id",
+  "/admin/deleteTeacher/:id",
   removeTeacher
 );
