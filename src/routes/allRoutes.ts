@@ -11,6 +11,7 @@ import {
   getTeacherRecordsRoute,
   deleteTeacherRecordsRoute,
 } from "./removeTeacher";
+import { addTeacherRoute } from "./addTeacher";
 
 export const allRoutes = [
   authStudentRoute,
@@ -25,4 +26,5 @@ export const allRoutes = [
   updateStudentRecordsRoute,
   getTeacherRecordsRoute,
   deleteTeacherRecordsRoute,
+  addTeacherRoute,
 ];
