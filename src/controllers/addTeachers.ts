@@ -18,8 +18,8 @@ export const addTeacher = async (request: Request, response: Response) => {
     SubjectProfile,
     mobileNumber,
   } = request.body;
-  const uniqueId = generateUniqueId();
-  const password = generatePassword();
+  const uniqueId = generateUniqueId(name, mobileNumber).toLowerCase();
+  const password = generatePassword(name, mobileNumber).toLowerCase();
   await connectToDatabase();
   const teacher = await teacherSchema.findOne({ name });
   if (teacher) {
