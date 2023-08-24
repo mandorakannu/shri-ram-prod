@@ -37,7 +37,7 @@ export const addTeacher = async (request: Request, response: Response) => {
       SubjectProfile,
       mobileNumber,
       uniqueId,
-      hashPassword,
+      password: hashPassword,
     });
     if (!newTeacher) {
       response.status(400).json("Teacher Already Exists");
