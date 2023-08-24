@@ -9,35 +9,37 @@ export const studentDetailsUpdate = async (
   response: Response
 ) => {
   const {
-    oldStudentName,
-    oldFatherName,
+    name,
+    motherName,
+    fatherName,
+    age,
+    dateOfBirth,
+    uniqueId,
+    oldName,
     oldMotherName,
+    oldFatherName,
     oldAge,
     oldDateOfBirth,
-    newStudentName,
-    newMotherName,
-    newFatherName,
-    newAge,
-    newDateOfBirth,
   } = request.body;
   await connectToDatabase();
   const user = await studentDetailsUpdateSchema.create({
-    name: oldStudentName,
-    fatherName: oldFatherName,
-    motherName: oldMotherName,
-    age: oldAge,
-    dateOfBirth: oldDateOfBirth,
-    newName: newStudentName,
-    newFatherName: newFatherName,
-    newMotherName: newMotherName,
-    newAge: newAge,
-    newDateOfBirth: newDateOfBirth,
+    newMotherName: motherName,
+    newFatherName: fatherName,
+    newAge: age,
+    newDateOfBirth: dateOfBirth,
+    uniqueId,
+    newName: name,
+    name: oldName === undefined ? "" : oldName,
+    motherName: oldMotherName === undefined ? "" : oldMotherName,
+    fatherName: oldFatherName === undefined ? "" : oldFatherName,
+    age: oldAge === undefined ? "" : oldAge,
+    dateOfBirth: oldDateOfBirth === undefined ? "" : oldDateOfBirth,
   });
   if (user) {
-    response.send("Student Details Updated Successfully").sendStatus(200);
+    response.status(200).json("Student Details Updated Successfully");
     await disconnectFromDatabase();
   } else {
-    response.send("Student Details Not Updated").sendStatus(400);
+    response.status(400).json("Student Details Not Updated");
     await disconnectFromDatabase();
   }
 };
