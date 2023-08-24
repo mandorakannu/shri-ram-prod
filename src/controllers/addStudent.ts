@@ -3,6 +3,7 @@ import { studentSchema } from "@models/students";
 import { Request, Response } from "express";
 import { numbers } from "@functions/numbers";
 import { generatePassword, generateUniqueId } from "@functions/stringGenerator";
+import { hashing } from "@functions/hashing";
 
 export const addStudent = async (req: Request, res: Response) => {
   const {
@@ -14,8 +15,9 @@ export const addStudent = async (req: Request, res: Response) => {
     mobileNumber,
     className,
   } = req.body;
-  const password = generatePassword();
-  const uniqueId = generateUniqueId();
+  const password = generatePassword(name, mobileNumber).toLowerCase();
+  const uniqueId = generateUniqueId(name, mobileNumber).toLowerCase();
+  const hashPassword = await hashing(password);
   await connectToDatabase();
   const addUser = await studentSchema.create({
     name,
@@ -32,11 +34,11 @@ export const addStudent = async (req: Request, res: Response) => {
       computer: numbers(),
       hindi: numbers(),
     },
-    password,
+    password: hashPassword,
     uniqueId,
   });
   if (addUser) {
-    res.json({password, uniqueId})
+    res.json({ password, uniqueId });
     res.statusCode = 201;
   }
 };
