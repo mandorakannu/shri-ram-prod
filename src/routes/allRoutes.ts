@@ -3,6 +3,10 @@ import { authAdminRoute, authStudentRoute, authTeacherRoute } from "./login";
 import { registerComplainsRoute, getComplainsRoute } from "./complain";
 import { studentDetailsUpdateRoute } from "./studentDetailsUpdate";
 import { addStudentRoute } from "./addStudent";
+import {
+  getStudentRecordsRoute,
+  updateStudentRecordsRoute,
+} from "./studentRecords";
 
 export const allRoutes = [
   authStudentRoute,
@@ -13,4 +17,6 @@ export const allRoutes = [
   getComplainsRoute,
   studentDetailsUpdateRoute,
   addStudentRoute,
+  getStudentRecordsRoute,
+  updateStudentRecordsRoute,
 ];
