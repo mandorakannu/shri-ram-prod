@@ -27,6 +27,15 @@ export const authStudent = async (request: Request, response: Response) => {
   }
   return response.status(200).json({
     message: "Student logged in successfully",
-    data: isStudent,
+    name: isStudent.name,
+    uniqueId: isStudent.uniqueId,
+    motherName: isStudent.motherName,
+    fatherName: isStudent.fatherName,
+    dateOfBirth: isStudent.dateOfBirth,
+    age: isStudent.age,
+    className: isStudent.className,
+    mobileNumber: isStudent.mobileNumber,
+    role: isStudent.role,
+    subjects: isStudent.subjects,
   });
 };

@@ -24,6 +24,13 @@ export const authAdmins = async (request: Request, response: Response) => {
   }
   return response.status(200).json({
     message: "Admin logged in successfully",
-    data: isAdmin,
+    name: isAdmin.name,
+    uniqueId: isAdmin.uniqueId,
+    motherName: isAdmin.motherName,
+    fatherName: isAdmin.fatherName,
+    dateOfBirth: isAdmin.dateOfBirth,
+    age: isAdmin.age,
+    mobileNumber: isAdmin.mobileNumber,
+    role: isAdmin.role,
   });
 };

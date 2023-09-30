@@ -27,6 +27,15 @@ export const authTeacher = async (request: Request, response: Response) => {
   }
   return response.status(200).json({
     message: "Teacher logged in successfully",
-    data: isTeacher,
+    name: isTeacher.name,
+    uniqueId: isTeacher.uniqueId,
+    motherName: isTeacher.motherName,
+    fatherName: isTeacher.fatherName,
+    dateOfBirth: isTeacher.dateOfBirth,
+    age: isTeacher.age,
+    mobileNumber: isTeacher.mobileNumber,
+    role: isTeacher.role,
+    qualification: isTeacher.qualification,
+    SubjectProfile: isTeacher.SubjectProfile,
   });
 };
