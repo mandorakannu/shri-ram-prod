@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc && tsc-alias && copyfiles -u 1 public/index.html dist/ && copyfiles -u 1 public/favicon.ico dist/ && copyfiles -u 1 public/assets/index-9a24e4a8.css dist/ && copyfiles -u 1 public/assets/index-4a4f52dc.js dist",
+    "build": "tsc && tsc-alias",
     "start": "node dist/index.js",
     "dev": "ts-node-dev -r tsconfig-paths/register src/index.ts"
   },
@@ -30,7 +30,6 @@
     "@types/express": "^4.17.17",
     "@types/jsonwebtoken": "^9.0.2",
     "@types/node": "^20.5.0",
-    "copyfiles": "^2.4.1",
     "ts-node-dev": "^2.0.0",
     "tsc-alias": "^1.8.7",
     "tsconfig-paths": "^4.2.0"
