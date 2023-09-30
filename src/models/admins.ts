@@ -18,6 +18,7 @@ const admin = new Schema({
   password: String,
   uniqueId: String,
   mobileNumber: Number,
+  role: String,
 });
 
 export const adminSchema = model("Admin", admin);

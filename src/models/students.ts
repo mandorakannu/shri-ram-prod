@@ -19,6 +19,7 @@ const student = new Schema({
   password: String,
   uniqueId: String,
   mobileNumber: Number,
+  role: String,
   subjects: {
     english: Number,
     hindi: Number,

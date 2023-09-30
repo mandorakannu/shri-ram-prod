@@ -20,6 +20,7 @@ const teacher = new Schema({
   password: String,
   uniqueId: String,
   mobileNumber: Number,
+  role: String,
 });
 
 export const teacherSchema = model("teachers", teacher);
