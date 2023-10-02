@@ -12,13 +12,12 @@ const PORT = process.env.PORT || 8000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
-app.use(express.static("public"));
 allRoutes.forEach((route) => {
   app.use(route);
 });
 
-app.get("*", (request: Request, res: Response) => {
-  res.sendFile(resolve(__dirname, "index.html"));
+app.get("/", (request: Request, res: Response) => {
+  res.send("Shri Ram College Backend is Working |  Created by Kannu Mandora");
 });
 
 app.listen(PORT, () => {

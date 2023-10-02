@@ -4,10 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc && tsc-alias",
+    "build": "rimraf dist && tsc && tsc-alias",
     "start": "node dist/index.js",
-    "dev": "ts-node-dev -r tsconfig-paths/register src/index.ts"
+    "dev": "ts-node-dev -r tsconfig-paths/register src/index.ts",
+    "ts.check": "tsc --project tsconfig.json",
+    "add-build": "git add dist"
   },
+  "pre-commit": [
+    "ts.check",
+    "build",
+    "add-build"
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -32,6 +39,8 @@
     "@types/node": "^20.5.0",
     "ts-node-dev": "^2.0.0",
     "tsc-alias": "^1.8.7",
-    "tsconfig-paths": "^4.2.0"
+    "tsconfig-paths": "^4.2.0",
+    "pre-commit": "^1.2.2",
+    "rimraf": "^5.0.5"
   }
 }
